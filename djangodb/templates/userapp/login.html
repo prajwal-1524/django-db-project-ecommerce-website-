@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contentblock %}
+
+  {% if messages %}
+    {% for message in messages %}
+      <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+
+  <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}  <!-- This will render the form fields nicely in <p> tags -->
+      <button type="submit">Login</button>
+  </form>
+
+  <p>Don't you have an account? <a href="">Register here</a></p>
+
+{% endblock %}

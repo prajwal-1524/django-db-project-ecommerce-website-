@@ -1,0 +1,33 @@
+<!Doctype html>
+
+
+{% extends 'base.html' %}
+{% block  contentblock %}
+
+{% load static %}
+<div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+    {%for product in products%}
+
+
+<div class="card" style="width: 18rem;">
+  <img src="{{product.product_image.image_name.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Add to Cart</li>
+    <li class="list-group-item">Add to Wishlist</li>
+    <!-- <li class="list-group-item">A third item</li> -->
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Details</a>
+    <!-- <a href="#" class="card-link">Another link</a> -->
+  </div>
+</div>
+
+{% endfor %}
+</div>
+
+    {% endblock %}
+
