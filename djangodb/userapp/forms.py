@@ -3,7 +3,8 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import CustomUser, Profile, vendor
+from .models import CustomUser
+from myapp.models import Vendor  # Vendor is defined in myapp.models
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Username', max_length=30, widget=forms.TextInput(attrs={
@@ -21,5 +22,10 @@ class UserSignUpForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'password1', 'password2', 'is_vendor')
+        fields = ('username', 'email', 'password1', 'password2', 'is_vendor', 'phone_number')
 
+
+class VendorSignUpForm(forms.ModelForm):
+    class Meta:
+        model = Vendor
+        fields = ['store_name', 'store_address','description', 'logo']
